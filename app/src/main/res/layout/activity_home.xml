@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity"
+    android:background="@color/gray">
+
+    <!-- Promo Banner -->
+    <EditText
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/button_shape"
+        android:backgroundTint="@color/white"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="8dp"
+        android:hint="Kamu Ingin Makan Apa?"
+        android:padding="12dp"
+        android:textColor="#000"
+        android:textSize="14sp" />
+
+    <!-- Menu List -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchBar"
+        android:layout_above="@id/bottomNavigation"
+        android:layout_marginTop="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+    <!-- Welcome Text -->
+            <!-- Promo Banner (ViewFlipper) -->
+            <ViewFlipper
+                android:id="@+id/promoBanner"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@id/searchBar"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="9dp"
+                android:background="@color/white"
+                android:padding="8dp"
+                android:autoStart="true"
+                android:flipInterval="2000"
+                android:layout_gravity="center"
+                android:inAnimation="@android:anim/fade_in"
+                android:outAnimation="@android:anim/fade_out">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/nasi5"
+                    android:scaleType="centerCrop" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/nasi2"
+                    android:scaleType="centerCrop" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/nasi3"
+                    android:scaleType="centerCrop" />
+
+            </ViewFlipper>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/promoBanner"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Teks "Hai Gilang" -->
+                <TextView
+                    android:id="@+id/welcomeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hai Selamat Datang"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#000" />
+
+                <!-- Icon Profil -->
+                <ImageView
+                    android:id="@+id/profileIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_profil"
+                    android:contentDescription="Profile Icon"/>
+
+                <ImageView
+                    android:id="@+id/logoutIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/ic_logout"
+                    android:tint="#000000"
+                    android:contentDescription="Logout Icon" />
+            </LinearLayout>
+
+
+
+    <!-- Menu Item 1 -->
+ <LinearLayout
+     android:id="@+id/beranda1"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_margin="8dp"
+     android:background="@color/white"
+     android:orientation="horizontal"
+     android:padding="8dp">
+
+     <ImageView
+         android:id="@+id/menuImage1"
+         android:layout_width="80dp"
+         android:layout_height="80dp"
+         android:layout_gravity="center_vertical"
+         android:scaleType="centerCrop"
+         android:src="@drawable/nasi3" />
+
+     <LinearLayout
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="8dp"
+         android:layout_weight="1"
+         android:orientation="vertical">
+
+         <TextView
+             android:id="@+id/menuName1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="D'Seafood"
+             android:textColor="#000"
+             android:textSize="16sp"
+             android:textStyle="bold" />
+
+         <TextView
+             android:id="@+id/menuDescription1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Nikmati beragam masakan internasional, yang memenuhi setiap selera"
+             android:textColor="#666"
+             android:textSize="12sp" />
+
+     <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:gravity="center_vertical"
+             android:orientation="horizontal">
+
+             <TextView
+                 android:id="@+id/menuPrice1"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginEnd="8dp"
+                 android:text="Rp.200.000"
+                 android:textColor="#FF5722"
+                 android:textSize="14sp"
+                 android:textStyle="bold" />
+
+             <ImageButton
+                 android:id="@+id/cartButton1"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:background="@color/SecondaryColor"
+                 android:contentDescription="Keranjang"
+                 android:src="@drawable/ic_shopping"
+                 android:tint="#FF5722" />
+
+    </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+
+
+    <!-- Menu Item 2 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/white"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/menuImage2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/nasi2"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/menuName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nasi Nusantara"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/menuDescription2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nikmati beragam masakan internasional, yang memenuhi setiap selera"
+                android:textColor="#666"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/menuPrice2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Rp.300.000"
+                    android:textColor="#FF5722"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/cartButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/SecondaryColor"
+                    android:contentDescription="Keranjang"
+                    android:src="@drawable/ic_shopping"
+                    android:tint="#FF5722" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!-- Menu Item 3 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/white"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/menuImage3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/nasi4"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/menuName3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BBQ platter"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/menuDescription3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nikmati beragam masakan internasional, yang memenuhi setiap selera"
+                android:textColor="#666"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/menuPrice3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Rp.250.000"
+                    android:textColor="#FF5722"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/cartButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/SecondaryColor"
+                    android:contentDescription="Keranjang"
+                    android:src="@drawable/ic_shopping"
+                    android:tint="#FF5722" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!-- Menu Item 4 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/white"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/menuImage4"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/nasi5"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/menuName4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Italian Pasta"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/menuDescription4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nikmati beragam masakan internasional, yang memenuhi setiap selera"
+                android:textColor="#666"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/menuPrice4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Rp.100.000"
+                    android:textColor="#FF5722"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/cartButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/SecondaryColor"
+                    android:contentDescription="Keranjang"
+                    android:src="@drawable/ic_shopping"
+                    android:tint="#FF5722" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!-- Menu Item 5 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/white"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/menuImage5"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/nasi6"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/menuName5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nasi Liwet Berdua"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/menuDescription5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nikmati beragam masakan internasional, yang memenuhi setiap selera"
+                android:textColor="#666"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/menuPrice5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Rp.110.000"
+                    android:textColor="#FF5722"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/cartButton5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/SecondaryColor"
+                    android:contentDescription="Keranjang"
+                    android:src="@drawable/ic_shopping"
+                    android:tint="#FF5722" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Menu Item 6 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/white"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/menuImage6"
+            android:layout_width="80dp"
+            android:layout_height="77dp"
+            android:layout_gravity="center_vertical"
+            android:scaleType="centerCrop"
+            android:src="@drawable/nasi7" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/menuName6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tumpeng"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/menuDescription6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nikmati beragam masakan internasional, yang memenuhi setiap selera"
+                android:textColor="#666"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/menuPrice6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Rp.150.000"
+                    android:textColor="#FF5722"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/cartButton6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/SecondaryColor"
+                    android:contentDescription="Keranjang"
+                    android:src="@drawable/ic_shopping"
+                    android:tint="#FF5722" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Menu Item 7 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/white"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/menuImage7"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:scaleType="centerCrop"
+            android:src="@drawable/nasi8" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/menuName7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salad Buah Rasa"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/menuDescription7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nikmati beragam masakan internasional, yang memenuhi setiap selera"
+                android:textColor="#666"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/menuPrice7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Rp.120.000"
+                    android:textColor="#FF5722"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/cartButton7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/SecondaryColor"
+                    android:contentDescription="Keranjang"
+                    android:src="@drawable/ic_shopping"
+                    android:tint="#FF5722" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Tambahkan item lainnya seperti di atas -->
+</LinearLayout>
+</ScrollView>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#FFFFFF"
+        android:elevation="4dp">
+
+        <!-- Home -->
+        <LinearLayout
+            android:id="@+id/layoutHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/selector_bottom_nav">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_home" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textSize="12sp"
+                android:textColor="#000" />
+        </LinearLayout>
+
+        <!-- Chat -->
+        <LinearLayout
+            android:id="@+id/layoutChat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/selector_bottom_nav">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_chat" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chat"
+                android:textSize="12sp"
+                android:textColor="#000" />
+        </LinearLayout>
+
+        <!-- Cooking -->
+        <LinearLayout
+            android:id="@+id/layoutCooking"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/selector_bottom_nav">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_cooking" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cooking"
+                android:textSize="12sp"
+                android:textColor="#000" />
+        </LinearLayout>
+
+        <!-- Shopping -->
+        <LinearLayout
+            android:id="@+id/layoutShopping"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/selector_bottom_nav">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_shopping" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shopping"
+                android:textSize="12sp"
+                android:textColor="#000" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    </RelativeLayout>

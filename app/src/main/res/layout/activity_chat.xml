@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:background="@color/SecondaryColor">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/orange"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/contactName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="130dp"
+            android:layout_toRightOf="@id/backButton"
+            android:text="Admin"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="25dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_back1"
+            android:contentDescription="@string/back_button"
+            android:background="?android:attr/selectableItemBackground"/>
+        </RelativeLayout>
+
+    <TextView
+        android:id="@+id/dateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Today"
+        android:textColor="@android:color/darker_gray" />
+
+    <RelativeLayout
+        android:id="@+id/messageLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dateText"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/messageSender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admin"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/messageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/messageSender"
+            android:background="@drawable/rounded_green_background"
+            android:padding="12dp"
+            app:cornerRadius="18dp"
+            android:text="Kami akan mengirimkan pesanan anda dalam waktu 10 menit, harap menunggu, Silahkan Isi Nomor meja anda ?"
+            android:textColor="@android:color/black" />
+
+    </RelativeLayout>
+
+
+    //chat pembeli 1//
+    <RelativeLayout
+        android:id="@+id/buyerMessageLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/messageLayout"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_alignParentRight="true"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/buyerMessageSender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pembeli"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/buyerMessageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buyerMessageSender"
+            android:background="@drawable/rounded_green_background"
+            android:padding="12dp"
+            app:cornerRadius="18dp"
+            android:text="Pesan dari pembeli akan muncul di sini"
+            android:textColor="@android:color/black" />
+    </RelativeLayout>
+
+
+    // chat admin ke2//
+    <RelativeLayout
+        android:id="@+id/messageLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buyerMessageLayout"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/messageSender1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admin"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/messageText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/messageSender1"
+            android:background="@drawable/rounded_green_background"
+            android:padding="12dp"
+            app:cornerRadius="18dp"
+            android:textColor="@android:color/black" />
+
+    </RelativeLayout>
+
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/buyerMessageLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/messageLayout1"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_alignParentRight="true"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/buyerMessageSender1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pembeli"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/buyerMessageText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buyerMessageSender1"
+            android:background="@drawable/rounded_green_background"
+            android:padding="12dp"
+            app:cornerRadius="18dp"
+            android:textColor="@android:color/black" />
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/inputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="16dp"
+        android:background="#FFFFFF">
+
+        <EditText
+            android:id="@+id/messageInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/sendButton"
+            android:background="@drawable/button_shape"
+            android:hint="Write Your Message here"
+            android:padding="10dp"
+            android:textSize="35px"
+            android:inputType="text" />
+
+        <ImageView
+            android:id="@+id/sendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_send"
+            android:contentDescription="Send"
+            android:background="@drawable/ripple_effect"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:backgroundTint="@color/white">
+
+    <ImageView
+        android:id="@+id/L_img_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="-1dp"
+        android:src="@drawable/bingkai1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bingkai2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/L_img_5"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bingkai3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/L_img_3"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bingkai4"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/L_img_4"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="70dp"
+        android:id="@+id/L_img_12"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/L_img_1"
+        android:text="Selamat Datang Silahkan Isi"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-black"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:id="@+id/L_txt_1"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/L_txt_1"
+        android:src="@drawable/gambar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:id="@+id/L_img_2"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/L_img_2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/shrikhand"
+        android:text="SepiringBerdua"
+        android:textSize="18dp"
+        android:textColor="@color/black"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/L_img_2"
+        android:padding="20dp"
+        android:id="@+id/ly_2">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:background="@drawable/button_shape"
+            android:layout_marginTop="40dp"
+            android:hint="Masukan Email Anda"
+            android:paddingLeft="15dp"
+            android:backgroundTint="@color/white"
+            android:id="@+id/edit_email" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:background="@drawable/button_shape"
+            android:layout_marginTop="10dp"
+            android:hint="Masukan Kata sandi"
+            android:paddingLeft="15dp"
+            android:backgroundTint="@color/white"
+            android:inputType="textPassword"
+            android:id="@+id/edit_kata_sandi" />
+        <ImageView
+            android:id="@+id/showPasswordIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_visibility_off"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="320dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_below="@+id/ly_2"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_shape"
+        android:width="300dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-black"
+        android:id="@+id/L_btn_1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/L_btn_1"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum punya akun?"
+            android:fontFamily="sans-serif-black"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Register"
+            android:fontFamily="sans-serif-black"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:id="@+id/txt_register"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

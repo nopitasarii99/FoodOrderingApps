@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/layout_judul"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/orange"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cooking"
+            android:layout_marginLeft="115dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_gambar"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/layout_judul"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/nasi3"/>
+
+    <TextView
+        android:id="@+id/tv_teks_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_gambar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/shrikhand"
+        android:text="Sedang memasak...."
+        android:textSize="16sp"
+        android:textColor="#FF6347"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/tv_keterangan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_teks_info"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/shrikhand"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:text="Silahkan klik tombol ini jika pesanan sudah diterima"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btn_terima_kasih"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_keterangan"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:width="300dp"
+        android:textSize="18sp"
+        android:text="Terima Kasih"
+        android:fontFamily="sans-serif-black"
+        android:background="@drawable/button_shape"/>
+
+</RelativeLayout>
