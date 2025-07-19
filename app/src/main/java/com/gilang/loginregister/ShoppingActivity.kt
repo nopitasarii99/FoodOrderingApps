@@ -7,11 +7,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.content.SharedPreferences
 import android.widget.TextView
-import android.util.Log
 import android.content.Intent
+import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
-
+import android.widget.Toast
 
 class ShoppingActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
@@ -21,12 +21,10 @@ class ShoppingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_shopping)
         supportActionBar?.hide()
 
-
         sharedPreferences = getSharedPreferences("ShoppingPrefs", MODE_PRIVATE)
 
-
-
         // Mengakses elemen-elemen menggunakan findViewById
+        val itemContainer = findViewById<LinearLayout>(R.id.itemContainer)
         val itemName = findViewById<TextView>(R.id.itemName)
         val itemPrice = findViewById<TextView>(R.id.itemPrice)
         val checkoutButton = findViewById<Button>(R.id.checkoutButton)
@@ -44,30 +42,40 @@ class ShoppingActivity : AppCompatActivity() {
         val itemImageResId = sharedPreferences.getInt("itemImageResId", R.drawable.nasi3)
         itemImage.setImageResource(itemImageResId)
 
-
         // Ambil data item dari SharedPreferences
-        val itemNameText = sharedPreferences.getString("itemName", "Unknown Item")
+        val itemNameText = sharedPreferences.getString("itemName", "")
         val itemPriceText = sharedPreferences.getString("itemPrice", "Rp.0.00")
-        var itemQuantity = sharedPreferences.getInt("itemQuantity", 1)
+        var itemQuantity = sharedPreferences.getInt("itemQuantity", 0)
 
+        // Menyembunyikan itemContainer jika tidak ada pesanan
+        if (itemNameText.isNullOrEmpty() || itemPriceText == "Rp.0.00" || itemQuantity == 0) {
+            itemContainer.visibility = LinearLayout.GONE
+            findViewById<LinearLayout>(R.id.paymentDetails).visibility = LinearLayout.GONE
+            checkoutButton.isEnabled = false
+            checkoutButton.setBackgroundColor(resources.getColor(R.color.gray)) // Ubah warna tombol untuk menandakan tidak aktif
+        } else {
+            itemContainer.visibility = LinearLayout.VISIBLE
+            findViewById<LinearLayout>(R.id.paymentDetails).visibility = LinearLayout.VISIBLE
+            checkoutButton.isEnabled = true
+            checkoutButton.setBackgroundColor(resources.getColor(R.color.orange)) // Kembalikan warna tombol yang aktif
+        }
 
         // Konversi harga satuan ke Double
         val unitPrice = convertPriceToDouble(itemPriceText ?: "Rp.0.00")
 
-
+        // Menangani tombol Checkout
         checkoutButton.setOnClickListener {
-            // Berpindah ke halaman Activity_Pembayaran
-            val intent = Intent(this, PembayaranActivity::class.java)
-            startActivity(intent)
+            if (itemNameText.isNullOrEmpty() || itemPriceText == "Rp.0.00" || itemQuantity == 0) {
+                // Jika tidak ada item, tampilkan pesan peringatan
+                Toast.makeText(this, "Silakan pilih pesanan terlebih dahulu", Toast.LENGTH_SHORT).show()
+            } else {
+                // Jika ada item, lanjutkan ke Activity_Pembayaran
+                val totalValue = totalTextView.text.toString() // Ambil nilai total
+                val intent = Intent(this, PembayaranActivity::class.java)
+                intent.putExtra("TOTAL_VALUE", totalValue) // Kirim data total
+                startActivity(intent)
+            }
         }
-
-        checkoutButton.setOnClickListener {
-            val totalValue = totalTextView.text.toString() // Ambil nilai total
-            val intent = Intent(this, PembayaranActivity::class.java)
-            intent.putExtra("TOTAL_VALUE", totalValue) // Kirim data total
-            startActivity(intent)
-        }
-
 
         // Menampilkan informasi item yang dipilih
         itemName.text = itemNameText
@@ -94,7 +102,7 @@ class ShoppingActivity : AppCompatActivity() {
 
         // Menangani tombol remove (-)
         removeButton.setOnClickListener {
-            if (itemQuantity > 0) {
+            if (itemQuantity > 1) {
                 itemQuantity--
                 itemCountTextView.text = itemQuantity.toString()
                 itemPrice.text = formatPrice(unitPrice * itemQuantity) // Update harga total
@@ -109,7 +117,6 @@ class ShoppingActivity : AppCompatActivity() {
             }
         }
 
-
         // Menangani klik pada tombol "Delete"
         itemDelete.setOnClickListener {
             val editor = sharedPreferences.edit()
@@ -119,12 +126,20 @@ class ShoppingActivity : AppCompatActivity() {
             editor.apply()
 
             // Reset tampilan
-            itemName.text = "Unknown Item"
+            itemName.text = ""
             itemPrice.text = "Rp.0.00"
             itemCountTextView.text = "0"
             subTotalTextView.text = "Subtotal: Rp.0.00"
             deliveryFeeTextView.text = "Pajak PPN: Rp.0.00"
             totalTextView.text = "Total: Rp.0.00"
+
+            // Sembunyikan itemContainer dan paymentDetails jika data dihapus
+            itemContainer.visibility = LinearLayout.GONE
+            findViewById<LinearLayout>(R.id.paymentDetails).visibility = LinearLayout.GONE
+
+            // Menonaktifkan tombol checkout jika tidak ada pesanan
+            checkoutButton.isEnabled = false
+            checkoutButton.setBackgroundColor(resources.getColor(R.color.gray)) // Ubah warna tombol untuk menandakan tidak aktif
 
             Log.d("ShoppingActivity", "Item data deleted")
         }
@@ -142,7 +157,6 @@ class ShoppingActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
     }
 
     // Fungsi untuk mengonversi harga dari format string ke angka (Double)
@@ -160,7 +174,7 @@ class ShoppingActivity : AppCompatActivity() {
     // Fungsi untuk menghitung dan memperbarui Subtotal, Pajak PPN, dan Total
     private fun updatePriceCalculations(unitPrice: Double, itemQuantity: Int, subTotalTextView: TextView, deliveryFeeTextView: TextView, totalTextView: TextView) {
         val subTotal = unitPrice * itemQuantity
-        val taxPPN = subTotal * 0.02 // Pajak PPN 10% dari subtotal
+        val taxPPN = subTotal * 0.02 // Pajak PPN 2% dari subtotal
         val total = subTotal + taxPPN
 
         // Update UI

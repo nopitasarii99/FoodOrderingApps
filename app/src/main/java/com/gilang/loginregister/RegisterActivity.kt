@@ -24,6 +24,13 @@ class RegisterActivity : AppCompatActivity() {
         val editUlangKataSandi: EditText = findViewById(R.id.edit_Ulang_kata_sandi)
         val btnRegister: Button = findViewById(R.id.R_btn_1)
 
+        // Menambahkan listener pada tombol back
+        val backButton = findViewById<ImageView>(R.id.R_img_5)
+        backButton.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish() // Menutup RegisterActivity
+        }
+
         // Listener untuk tombol Register
         btnRegister.setOnClickListener {
             val namaLengkap = editNamaLengkap.text.toString()
@@ -53,31 +60,19 @@ class RegisterActivity : AppCompatActivity() {
             Toast.makeText(this, "Registrasi Berhasil!", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, LoginActivity::class.java))
             finish() // Menutup RegisterActivity
-
-
-            val R_img_5: ImageView = findViewById(R.id.R_img_5)
-            btnBackloginListener(R_img_5)
-
-            val txtLogin: TextView = findViewById(R.id.txt_login)
-            txtLoginListener(txtLogin)
-
-            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-                insets
-            }
-        }
-    }
-
-        private fun btnBackloginListener(R_img_5: ImageView) {
-            R_img_5.setOnClickListener {
-                startActivity(Intent(this, MainActivity::class.java))
-            }
         }
 
-        private fun txtLoginListener(txtLogin: TextView) {
-            txtLogin.setOnClickListener {
-                startActivity(Intent(this, LoginActivity::class.java))
+        // Menambahkan listener pada textLogin untuk membuka halaman LoginActivity
+        val txtLogin: TextView = findViewById(R.id.txt_login)
+        txtLogin.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish() // Menutup RegisterActivity
+        }
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
             }
         }
     }

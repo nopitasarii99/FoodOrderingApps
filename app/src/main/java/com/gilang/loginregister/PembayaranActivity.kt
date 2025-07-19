@@ -76,13 +76,15 @@ class PembayaranActivity : AppCompatActivity() {
             val sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putBoolean("canAccessCooking", true) // Set akses menjadi true
+            editor.putBoolean("canAccessChat", true) // Set akses menjadi true
+
             editor.apply()
 
             // Berikan pesan konfirmasi
             Toast.makeText(this, "Pembayaran berhasil! Cooking dapat diakses.", Toast.LENGTH_SHORT).show()
 
             // Pindah ke halaman utama (opsional)
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this, BerhasilActivity::class.java)
             startActivity(intent)
             finish()
         }

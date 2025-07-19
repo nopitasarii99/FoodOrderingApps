@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -12,12 +13,12 @@ import android.widget.LinearLayout
 import android.widget.ViewFlipper
 import android.widget.Toast
 
-
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var promoBanner: ViewFlipper
 
     private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -38,13 +39,12 @@ class HomeActivity : AppCompatActivity() {
         val menuName1 = findViewById<TextView>(R.id.menuName1)
         val menuPrice1 = findViewById<TextView>(R.id.menuPrice1)
 
-
         // Menambahkan item ke keranjang belanja saat tombol cartButton1 diklik
         cartButton1.setOnClickListener {
             val itemName = menuName1.text.toString()
             val itemPrice = menuPrice1.text.toString()
             val itemImageResId = R.drawable.nasi3 // Gambar yang sesuai dengan menu
-            addToCart(itemName, itemPrice,  itemImageResId)
+            addToCart(itemName, itemPrice, itemImageResId)
         }
 
         // Set klik listener untuk berpindah ke ShoppingActivity
@@ -70,7 +70,6 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         // Di dalam HomeActivity.kt
         val sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE)
         val canAccessChat = sharedPreferences.getBoolean("canAccessChat", false)
@@ -88,7 +87,6 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-
         // Ambil status akses dari SharedPreferences
         val canAccessCooking = sharedPreferences.getBoolean("canAccessCooking", false)
 
@@ -104,8 +102,6 @@ class HomeActivity : AppCompatActivity() {
                 Toast.makeText(this, "Akses ke Cooking hanya tersedia setelah pembayaran.", Toast.LENGTH_SHORT).show()
             }
         }
-
-
 
         // Set logika akses Chat
         if (canAccessChat) {
@@ -130,6 +126,34 @@ class HomeActivity : AppCompatActivity() {
                 Toast.makeText(this, "Cooking tidak dapat diakses.", Toast.LENGTH_SHORT).show()
             }
         }
+
+        // Temukan tombol logout
+        val logoutIcon = findViewById<ImageView>(R.id.logoutIcon)
+
+// Set OnClickListener untuk logoutIcon
+        logoutIcon.setOnClickListener {
+            // Buat AlertDialog untuk konfirmasi logout
+            val builder = android.app.AlertDialog.Builder(this)
+            builder.setTitle("Konfirmasi Logout")
+            builder.setMessage("Apakah Anda yakin ingin keluar?")
+
+            builder.setPositiveButton("Ya") { dialog, which ->
+                // Jika "Ya" diklik, lakukan logout dan pindah ke layar login
+                // Misalnya pindah ke Activity Login:
+                val intent = Intent(this, LoginActivity::class.java) // Ganti LoginActivity sesuai kebutuhan
+                startActivity(intent)
+                finish() // Tutup HomeActivity
+            }
+
+            builder.setNegativeButton("Batal") { dialog, which ->
+                // Jika "Batal" diklik, hanya menutup dialog
+                dialog.dismiss()
+            }
+
+            // Tampilkan dialog
+            builder.show()
+        }
+
 
     }
 

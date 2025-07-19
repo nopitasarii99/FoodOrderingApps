@@ -10,7 +10,8 @@ import android.view.Gravity
 import android.content.SharedPreferences
 import android.content.Intent
 import android.widget.Button
-
+import android.widget.ImageButton
+import android.widget.ImageView
 
 
 class CookingActivity : AppCompatActivity() {
@@ -21,6 +22,16 @@ class CookingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_cooking)
+
+        val iv_Back = findViewById<ImageView>(R.id.iv_back)
+        // Menangani klik pada tombol kembali (backButton)
+        iv_Back.setOnClickListener {
+            // Pindahkan ke HomeActivity
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            finish() // Hapus ShoppingActivity dari stack
+        }
+
 
         // Temukan TextView dengan ID tv_teks_info
         val tvTeksInfo = findViewById<TextView>(R.id.tv_teks_info)
@@ -55,6 +66,7 @@ class CookingActivity : AppCompatActivity() {
             editor.putBoolean("canAccessChat", false) // Nonaktifkan Chat
             editor.putBoolean("canAccessCooking", false) // Nonaktifkan Cooking
             editor.apply()
+
 
             // Kembali ke halaman Home
             val intent = Intent(this, HomeActivity::class.java)

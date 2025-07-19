@@ -22,6 +22,13 @@
         android:textColor="#000"
         android:textSize="14sp" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchBar"
+        android:layout_marginTop="16dp" />
+
     <!-- Menu List -->
     <ScrollView
         android:id="@+id/scrollView"
