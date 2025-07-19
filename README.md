@@ -35,5 +35,35 @@
 4. Jalankan di Emulator / HP langsung
 
 ```bash
-git clone https://github.com/nopitasarii99/FoodOrderingApps.git
+git clone https://github.com/nopitasarii99/FoodOrderingApps.gito
+```
 
+---
+
+##🧑‍💻 Tim Developer
+Nama Lengkap	NIM	Peran
+Novitasari
+Maulida Khairun Nisa
+
+---
+
+##📂 Struktur Folder
+swift
+Salin
+Edit
+LoginRegister/
+├── app/
+│   └── src/main/java/com/gilang/loginregister/
+│   └── res/layout/
+├── gradle/
+├── build.gradle.kts
+├── settings.gradle.kts
+└── .gitignore
+
+---
+
+##📄 Lisensi
+Proyek ini bersifat edukatif dan open-source.
+Lisensi: MIT License
+
+Silakan digunakan untuk keperluan belajar dan pengembangan tugas akademik.
